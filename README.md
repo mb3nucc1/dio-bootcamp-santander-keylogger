@@ -75,7 +75,7 @@ log = ""
 
 EMAIL_ORIGEM = "cyber.multitools@gmail.com"
 EMAIL_DESTINO = "cyber.multitools@gmail.com"
-SENHA_EMAIL = os.getenv("SENHA_EMAIL", "tmze ltte gyeq ewrh")
+SENHA_EMAIL = os.getenv("SENHA_EMAIL", "*** **** **** ****")
 
 
 def enviar_email():
