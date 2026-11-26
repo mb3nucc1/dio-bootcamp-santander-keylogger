@@ -121,7 +121,7 @@ with keyboard.Listener(on_press=on_press) as listener:
     enviar_email()
     listener.join()
 ```
-##🛡️ Defesa, Detecção e Mitigação
+## 🛡️ Defesa, Detecção e Mitigação
 
 Antivírus e EDR: Detecção comportamental de processos que registram hooks de teclado globais, acessam APIs de entrada ou exibem padrões típicos de scripts maliciosos.
 
