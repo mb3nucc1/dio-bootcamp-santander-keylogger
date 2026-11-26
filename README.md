@@ -123,13 +123,13 @@ with keyboard.Listener(on_press=on_press) as listener:
 ```
 ## 🛡️ Defesa, Detecção e Mitigação
 
-Antivírus e EDR: Detecção comportamental de processos que registram hooks de teclado globais, acessam APIs de entrada ou exibem padrões típicos de scripts maliciosos.
+- Antivírus e EDR: Detecção comportamental de processos que registram hooks de teclado globais, acessam APIs de entrada ou exibem padrões típicos de scripts maliciosos.
 
-Controle de Execução e Privilégio Mínimo: Restrição de execução de scripts não autorizados, bloqueio de diretórios graváveis pelo usuário e uso de contas com privilégios limitados.
+- Controle de Execução e Privilégio Mínimo: Restrição de execução de scripts não autorizados, bloqueio de diretórios graváveis pelo usuário e uso de contas com privilégios limitados.
 
-Monitoramento de Rede e Firewall: Controle de tráfego de saída (egress) para impedir exfiltração não autorizada de logs ou credenciais.
+- Monitoramento de Rede e Firewall: Controle de tráfego de saída (egress) para impedir exfiltração não autorizada de logs ou credenciais.
 
-Sandboxing e Conscientização: Análise de arquivos suspeitos em ambientes isolados e treinamento contínuo contra phishing e engenharia social.
+- Sandboxing e Conscientização: Análise de arquivos suspeitos em ambientes isolados e treinamento contínuo contra phishing e engenharia social.
 
 ---
 
